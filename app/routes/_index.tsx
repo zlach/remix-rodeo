@@ -28,7 +28,7 @@ export default function BoggleGame() {
 
   return (
     <div className="boggle-game">
-      <h1>Boggle Game</h1>
+      <h1 className='text-4xl font-bold text-center'>Boggle Game</h1>
       <GameBoard />
     </div>
   );

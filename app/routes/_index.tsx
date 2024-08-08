@@ -1,48 +1,38 @@
-import type { MetaFunction } from "@remix-run/node";
+import { useState, useEffect } from 'react';
+import type { V2_MetaFunction } from '@remix-run/node';
+import GameBoard from '../components/GameBoard';
 
-export const meta: MetaFunction = () => {
+export const meta: V2_MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: 'Boggle Game' },
+    { name: 'description', content: 'Play Boggle online!' },
   ];
 };
 
-export default function Index() {
+export default function BoggleGame() {
+  const [letters, setLetters] = useState<string[][]>([]);
+
+  useEffect(() => {
+    // TODO: Implement function to generate random letters
+    const generateRandomLetters = (): string[][] => {
+      // Placeholder: returns a 5x5 grid of random letters
+      return Array(5)
+        .fill(null)
+        .map(() =>
+          Array(5)
+            .fill(null)
+            .map(() => String.fromCharCode(65 + Math.floor(Math.random() * 26)))
+        );
+    };
+
+    setLetters(generateRandomLetters());
+  }, []);
+
   return (
-    <div className="font-sans p-4">
-      <h1 className="text-3xl">Welcome to Remix</h1>
-      <ul className="list-disc mt-4 pl-6 space-y-2">
-        <li>
-          <a
-            className="text-blue-700 underline visited:text-purple-900"
-            target="_blank"
-            href="https://remix.run/start/quickstart"
-            rel="noreferrer"
-          >
-            5m Quick Start
-          </a>
-        </li>
-        <li>
-          <a
-            className="text-blue-700 underline visited:text-purple-900"
-            target="_blank"
-            href="https://remix.run/start/tutorial"
-            rel="noreferrer"
-          >
-            30m Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            className="text-blue-700 underline visited:text-purple-900"
-            target="_blank"
-            href="https://remix.run/docs"
-            rel="noreferrer"
-          >
-            Remix Docs
-          </a>
-        </li>
-      </ul>
+    <div className="boggle-game">
+      <h1>Boggle Game</h1>
+      <GameBoard letters={letters} />
+      {/* TODO: Add more game components (timer, score, input, etc.) */}
     </div>
   );
 }

@@ -3,9 +3,8 @@ import LetterTile from './LetterTile';
 import WordDisplay from './WordDisplay';
 import { generateLetterGrid } from '../utils/letterGenerator';
 
-interface GameBoardProps {}
 
-export default function GameBoard({}: GameBoardProps) {
+export default function GameBoard() {
   const [letters, setLetters] = useState<string[][]>([]);
   const [selectedWord, setSelectedWord] = useState('');
 

@@ -1,38 +1,46 @@
-import { useState, useEffect } from 'react';
-import LetterTile from './LetterTile';
-import WordDisplay from './WordDisplay';
-import { generateLetterGrid } from '../utils/letterGenerator';
+import { useState, useEffect } from "react";
+import LetterTile from "./LetterTile";
+import WordDisplay from "./WordDisplay";
+import { generateLetterGrid } from "../utils/letterGenerator";
 
 
 export default function GameBoard() {
   const [letters, setLetters] = useState<string[][]>([]);
+<<<<<<< Updated upstream
   const [selectedWord, setSelectedWord] = useState('');
   const [acceptedWords, setAcceptedWords] = useState<string[]>([]);
+=======
+  const [selectedWord, setSelectedWord] = useState("");
+>>>>>>> Stashed changes
 
   useEffect(() => {
     setLetters(generateLetterGrid(5, 5));
   }, []);
 
   const handleLetterClick = (letter: string) => {
-    setSelectedWord(prevWord => prevWord + letter);
+    setSelectedWord((prevWord) => prevWord + letter);
   };
 
   const handleAcceptWord = () => {
     // TODO: Implement word checking logic
+<<<<<<< Updated upstream
     console.log('Checking word:', selectedWord);
     setAcceptedWords(prevWords => [...prevWords, selectedWord]);
+=======
+    console.log("Checking word:", selectedWord);
+>>>>>>> Stashed changes
     // Clear the word after checking
-    setSelectedWord('');
+    setSelectedWord("");
   };
 
   const handleClearWord = () => {
-    setSelectedWord('');
+    setSelectedWord("");
   };
 
   return (
     <div>
       <div className="grid grid-cols-5 gap-1 p-2 bg-gray-200 rounded-lg">
-        {letters.map((row, rowIndex) => (
+        {letters.map((row, rowIndex) =>
           row.map((letter, colIndex) => (
             <LetterTile
               key={`${rowIndex}-${colIndex}`}
@@ -40,7 +48,7 @@ export default function GameBoard() {
               onClick={() => handleLetterClick(letter)}
             />
           ))
-        ))}
+        )}
       </div>
       <WordDisplay word={selectedWord} />
       <div className="mt-4 flex justify-center space-x-4">

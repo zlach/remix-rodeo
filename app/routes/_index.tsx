@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import type { V2_MetaFunction } from '@remix-run/node';
+import type { MetaFunction } from '@remix-run/node';
 import GameBoard from '../components/GameBoard';
 
-export const meta: V2_MetaFunction = () => {
+export const meta: MetaFunction = () => {
   return [
     { title: 'Boggle Game' },
     { name: 'description', content: 'Play Boggle online!' },

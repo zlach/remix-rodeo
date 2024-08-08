@@ -7,6 +7,7 @@ import { generateLetterGrid } from '../utils/letterGenerator';
 export default function GameBoard() {
   const [letters, setLetters] = useState<string[][]>([]);
   const [selectedWord, setSelectedWord] = useState('');
+  const [acceptedWords, setAcceptedWords] = useState<string[]>([]);
 
   useEffect(() => {
     setLetters(generateLetterGrid(5, 5));
@@ -19,6 +20,7 @@ export default function GameBoard() {
   const handleAcceptWord = () => {
     // TODO: Implement word checking logic
     console.log('Checking word:', selectedWord);
+    setAcceptedWords(prevWords => [...prevWords, selectedWord]);
     // Clear the word after checking
     setSelectedWord('');
   };
@@ -54,6 +56,14 @@ export default function GameBoard() {
         >
           Clear
         </button>
+      </div>
+      <div className="mt-4">
+        <h3 className="text-lg font-semibold">Accepted Words:</h3>
+        <ul className="list-disc list-inside">
+          {acceptedWords.map((word, index) => (
+            <li key={index}>{word}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );

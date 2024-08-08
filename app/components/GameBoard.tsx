@@ -31,6 +31,7 @@ export default function GameBoard() {
       } else if (data.title === "No Definitions Found") {
         // Word is not valid
         alert('Not a valid word!');
+        setSelectedWord('');
       } else {
         // Unexpected response
         throw new Error('Unexpected API response');

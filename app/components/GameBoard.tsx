@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import LetterTile from './LetterTile';
 import WordDisplay from './WordDisplay';
+import { generateLetterGrid } from '../utils/letterGenerator';
 
-interface GameBoardProps {
-  letters: string[][];
-}
+interface GameBoardProps {}
 
-export default function GameBoard({ letters }: GameBoardProps) {
+export default function GameBoard({}: GameBoardProps) {
+  const [letters, setLetters] = useState<string[][]>([]);
   const [selectedWord, setSelectedWord] = useState('');
+
+  useEffect(() => {
+    setLetters(generateLetterGrid(5, 5));
+  }, []);
 
   const handleLetterClick = (letter: string) => {
     setSelectedWord(prevWord => prevWord + letter);

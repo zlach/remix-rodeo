@@ -3,15 +3,10 @@ import LetterTile from "./LetterTile";
 import WordDisplay from "./WordDisplay";
 import { generateLetterGrid } from "../utils/letterGenerator";
 
-
 export default function GameBoard() {
   const [letters, setLetters] = useState<string[][]>([]);
-<<<<<<< Updated upstream
-  const [selectedWord, setSelectedWord] = useState('');
-  const [acceptedWords, setAcceptedWords] = useState<string[]>([]);
-=======
   const [selectedWord, setSelectedWord] = useState("");
->>>>>>> Stashed changes
+  const [acceptedWords, setAcceptedWords] = useState<string[]>([]);
 
   useEffect(() => {
     setLetters(generateLetterGrid(5, 5));
@@ -23,12 +18,8 @@ export default function GameBoard() {
 
   const handleAcceptWord = () => {
     // TODO: Implement word checking logic
-<<<<<<< Updated upstream
-    console.log('Checking word:', selectedWord);
-    setAcceptedWords(prevWords => [...prevWords, selectedWord]);
-=======
     console.log("Checking word:", selectedWord);
->>>>>>> Stashed changes
+    setAcceptedWords((prevWords) => [...prevWords, selectedWord]);
     // Clear the word after checking
     setSelectedWord("");
   };

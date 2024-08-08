@@ -1,12 +1,8 @@
-<<<<<<< Updated upstream
-import { useEffect } from 'react';
-import type { MetaFunction } from '@remix-run/node';
-import GameBoard from '../components/GameBoard';
-=======
-import GameBoard from "../components/GameBoard";
+import { useEffect } from "react";
+import GameBoard from "~/components/GameBoard";
 import { json, MetaFunction, type LoaderFunctionArgs } from "@remix-run/node";
 import { dbConnect } from "db.server";
->>>>>>> Stashed changes
+import { useLoaderData } from "@remix-run/react";
 
 export const meta: MetaFunction = () => {
   return [
@@ -24,22 +20,16 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 };
 
 export default function BoggleGame() {
-<<<<<<< Updated upstream
+  const { users } = useLoaderData<typeof loader>();
 
   useEffect(() => {
+    console.log(users);
+  }, [users]);
 
-  }, []);
-
-=======
->>>>>>> Stashed changes
   return (
     <div className="boggle-game">
       <h1>Boggle Game</h1>
       <GameBoard />
-<<<<<<< Updated upstream
-=======
-      {/* TODO: Add more game components (timer, score, input, etc.) */}
->>>>>>> Stashed changes
     </div>
   );
 }

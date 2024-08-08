@@ -50,7 +50,7 @@ export default function GameBoard() {
 
   return (
     <div>
-      <div className="grid grid-cols-5 gap-1 p-2 bg-gray-200 rounded-lg">
+      <div className="grid grid-cols-5 gap-1 p-2 bg-gray-200 rounded-lg w-fit mx-auto">
         {letters.map((row, rowIndex) => (
           row.map((letter, colIndex) => (
             <LetterTile
